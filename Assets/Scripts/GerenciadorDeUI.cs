@@ -9,6 +9,9 @@ public class GerenciadorDeUI : MonoBehaviour
 
     public Sprite[] vidas;
 
+    public int placar = 0;
+
+    public Text textoDoPlacar;
 
     public Image mostrarImagemDasVidas;
 
@@ -32,7 +35,13 @@ public class GerenciadorDeUI : MonoBehaviour
 
     }
 
+    public void AtualizarPlacar()
+    {
+        placar = placar + 100;
 
+        textoDoPlacar.text = "PLACAR: " + placar.ToString();
+
+    }
 
 
 
