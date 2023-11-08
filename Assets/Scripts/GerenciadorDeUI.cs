@@ -15,6 +15,7 @@ public class GerenciadorDeUI : MonoBehaviour
 
     public Image mostrarImagemDasVidas;
 
+    public GameObject telaInicial;
      
     // Start is called before the first frame update
     void Start()
@@ -40,6 +41,23 @@ public class GerenciadorDeUI : MonoBehaviour
         placar = placar + 100;
 
         textoDoPlacar.text = "PLACAR: " + placar.ToString();
+
+    }
+
+
+    public void EsconderTelaInicial()
+    {
+
+        telaInicial.SetActive(false);
+
+
+    }
+
+    public void ExibirTelaInicial()
+    {
+
+        telaInicial.SetActive(true);
+
 
     }
 

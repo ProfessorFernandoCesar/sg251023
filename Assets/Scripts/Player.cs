@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Jobs;
 
@@ -20,7 +21,11 @@ public class Player : MonoBehaviour
 
     public int vidas = 3;
 
+   
     private GerenciadorDeUI _uiGerenciador;
+
+    
+    private GerenciadorDoJogo _gerenciadorDoJogo;
 
     [SerializeField]
     private GameObject _explosaoPlayerPrefab;
@@ -32,12 +37,21 @@ public class Player : MonoBehaviour
         velocidade = 3.0f ;
         transform.position = new Vector3(0,0,0);
 
+         _gerenciadorDoJogo = GameObject.Find("GerenciadorDoJogo").GetComponent<GerenciadorDoJogo>();
+
+        
+        
         _uiGerenciador = GameObject.Find("Canvas").GetComponent<GerenciadorDeUI>();
         if (_uiGerenciador != null)
         {
             _uiGerenciador.AtualizarVidas(vidas);
 
         }
+
+
+        
+
+
 
 
     }
@@ -129,7 +143,11 @@ public class Player : MonoBehaviour
         if ( vidas < 1 )
         {
             Instantiate(_explosaoPlayerPrefab,transform.position,Quaternion.identity);
-            Destroy(this.gameObject);
+
+            _uiGerenciador.ExibirTelaInicial();
+            _gerenciadorDoJogo.fimDeJogo = true;
+
+Destroy(this.gameObject);
         }
         
 
